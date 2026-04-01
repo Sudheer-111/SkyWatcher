@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skywatcher — Weather App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="EndSem.css"/>
+</head>
+<body>
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-logo">⛅ Skywatcher</div>
+    <div class="nav-links">
+    <a href="#" class="nav-link active" data-page="home">Home</a>
+    <a href="#" class="nav-link" data-page="forecast">5-Day</a>
+    <a href="#" class="nav-link" data-page="map">Wind Map</a>
+    <a href="#" class="nav-link" data-page="about">About</a>
+    </div>0
+    <button class="hamburger" id="hamburger">☰</button>
+  </nav>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#" class="nav-link" data-page="home">Home</a>
+    <a href="#" class="nav-link" data-page="forecast">5-Day Forecast</a>
+    <a href="#" class="nav-link" data-page="map">Wind Map</a>
+    <a href="#" class="nav-link" data-page="about">About</a>
+  </div>
+  <!-- ===================== PAGE: HOME ===================== -->
+  <div id="page-home" class="page active">
+    <div class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-content">
+    <p class="hero-label">REAL-TIME WEATHER</p>
+    <h1 class="hero-title">What's the sky<br/>doing today?</h1>
+    <div class="search-bar">
+    <input type="text" id="cityInput" placeholder="Enter a city…" autocomplete="off"/>
+    <button id="searchBtn">Search</button>
+    </div>
+    <p class="error-msg" id="errorMsg"></p>
+    </div>
+    </div>
+    <!-- WEATHER CARD (hidden until fetched) -->
+    <div class="weather-card hidden" id="weatherCard">
+    <div class="card-header">
+    <div>
+    <h2 id="cardCity">—</h2>
+    <p id="cardCountry">—</p>
+    </div>
+    <div class="card-icon" id="cardIcon">🌤</div>
+    </div>
+    <div class="card-temp-row">
+    <span class="card-temp" id="cardTemp">—</span>
+    <div class="card-feels">
+    <span>Feels like <b id="cardFeels">—</b></span>
+    <span id="cardDesc">—</span>
+    </div>
+    </div>
+    <div class="card-stats">
+    <div class="stat"><span class="stat-label">Humidity</span><span class="stat-val" id="cardHumidity">—</span></div>
+    <div class="stat"><span class="stat-label">Wind</span><span class="stat-val" id="cardWind">—</span></div>
+    <div class="stat"><span class="stat-label">Pressure</span><span class="stat-val" id="cardPressure">—</span></div>
+    <div class="stat"><span class="stat-label">Visibility</span><span class="stat-val" id="cardVis">—</span></div>
+    </div>
+    <div class="card-footer">
+    <span id="cardSunrise">🌅 —</span>
+    <span id="cardSunset">🌇 —</span>
+    <button class="btn-forecast" data-page="forecast">See 5-Day →</button>
+    </div>
+    </div>
+    <!-- RECENT SEARCHES -->
+    <div class="recent-section" id="recentSection">
+    <h3>Recent Searches</h3>
+    <div class="recent-list" id="recentList"></div>
+    </div>
+  </div>
+  <!-- ===================== PAGE: FORECAST ===================== -->
+  <div id="page-forecast" class="page">
+    <div class="inner-page">
+    <h2 class="page-title">5-Day Forecast</h2>
+    <p class="page-sub" id="forecastCity">Search a city on the Home page first.</p>
+    <div class="forecast-grid" id="forecastGrid"></div>
+    </div>
+  </div>
+  <!-- ===================== PAGE: MAP ===================== -->
+  <div id="page-map" class="page">
+    <div class="inner-page">
+    <h2 class="page-title">Wind & Pressure Map</h2>
+    <p class="page-sub">Live OpenWeatherMap layer — scroll & zoom.</p>
+    <div class="map-controls">
+    <button class="map-btn active" data-layer="wind">Wind</button>
+    <button class="map-btn" data-layer="pressure">Pressure</button>
+    <button class="map-btn" data-layer="clouds">Clouds</button>
+    <button class="map-btn" data-layer="temp">Temp</button>
+      </div>
+      <div class="map-container">
+        <iframe id="mapFrame" src="" title="Weather Map" allowfullscreen></iframe>
+      </div>
+      <p class="map-note">Powered by OpenWeatherMap tile layers via OpenStreetMap.</p>
+    </div>
+  </div>
+  <!-- ===================== PAGE: ABOUT ===================== -->
+  <div id="page-about" class="page">
+    <div class="inner-page about-inner">
+      <div class="about-badge">⛅</div>
+      <h2 class="page-title">About Skywatcher</h2>
+      <p class="about-desc">
+        Skywatcher is a lightweight, no-framework weather app built with vanilla JS and the
+        <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap API</a>.
+        It provides real-time conditions, 5-day forecasts, and live weather map layers.
+      </p>
+      <div class="about-features">
+        <div class="feature-card">🌡️<span>Current Conditions</span><small>Temp, humidity, wind, pressure & more</small></div>
+        <div class="feature-card">📅<span>5-Day Forecast</span><small>Hourly-grouped daily predictions</small></div>
+        <div class="feature-card">🗺️<span>Live Map Layers</span><small>Wind, clouds, temp & pressure tiles</small></div>
+        <div class="feature-card">📍<span>Recent History</span><small>Quick-access last searches</small></div>
+      </div>
+      <div class="team">
+        <h3>Team</h3>
+        <div class="team-list">
+          <span>Shivamani</span><span>Rishi</span><span>Sai Charan Reddy</span><span>Sudheer</span>
+        </div>
+      </div>
+      <div class="api-info">
+        <p>API: OpenWeatherMap (free tier) &nbsp;|&nbsp; Data updated in real time</p>
+      </div>
+    </div>
+  </div>
+  <script src="EndSem.js"></script>
+</body>
+</html>
